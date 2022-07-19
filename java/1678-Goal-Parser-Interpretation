@@ -1,0 +1,28 @@
+
+class Solution {
+    public String interpret(String command) {
+        //StringBuider interpretation = new StringBuilder();
+        StringBuilder interpretation = new StringBuilder();
+
+        char[] charCommands = command.toCharArray();
+        
+        for (int i=0; i<charCommands.length; i++) {
+            if (charCommands[i] == '(') {
+                if (charCommands[i+1] == ')') {
+                    interpretation.append('o');
+                } else {
+                    interpretation.append('a');
+                    interpretation.append('l');
+                }
+            }
+            else if (charCommands[i] == 'G') {
+                interpretation.append('G');
+            }
+            else {
+                continue;
+            }
+        }
+        return interpretation.toString();
+        
+    }
+}
