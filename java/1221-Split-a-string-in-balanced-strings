@@ -1,0 +1,21 @@
+class Solution {
+    public int balancedStringSplit(String s) {
+        //RLRRRLLL
+        //LLRR
+        Stack<Character> stack = new Stack<Character>();
+        
+        int count = 0;
+        for (char c : s.toCharArray()) {
+            if (stack.empty() || c == stack.peek()) {
+                stack.push(c);
+            }
+            else {
+                stack.pop();
+            }
+            if (stack.empty()) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
