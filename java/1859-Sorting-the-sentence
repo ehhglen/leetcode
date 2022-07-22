@@ -1,0 +1,44 @@
+class Solution {
+    public String sortSentence(String s) {
+        String[] shuffledSentence = s.split(" ");
+        int len = shuffledSentence.length;
+      
+        
+        String[] sortedWordArray = new String[len];
+        //System.out.println(len);
+        //get the words in the right positions
+        for (int i=len-1; i>=0; i--) {
+            if (isDigit(shuffledSentence[i])) {
+                String wordWithNum = shuffledSentence[i];
+                String[] splitWord = wordWithNum.split("(?<=\\D)(?=\\d)");
+                //[0] is the word
+                //[1] is the number
+                String word = splitWord[0];
+                int position = Integer.parseInt(splitWord[1]);
+                sortedWordArray[position-1] = word; //-1 because the starting word is 1 indexed
+            }
+            else {
+                continue;
+            }
+        }
+        
+        //convert the word array into a string and return it
+        String ogSentenceWithCommas = String.join(",", sortedWordArray);
+        String ogSentence = ogSentenceWithCommas.replaceAll(",", " ");
+        System.out.println(ogSentence);
+        return ogSentence;
+    }
+    
+    
+     //helper method   
+     private boolean isDigit(String s) {
+        if (s == "") return false;
+        
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
