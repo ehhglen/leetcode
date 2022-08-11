@@ -1,0 +1,24 @@
+class Solution {
+    public String toLowerCase(String s) {
+        // The idea behind this solution is that 
+        // the lower case letters of the alphabet
+        // are just a difference of '32' in ASCII.
+        // So basically, to convert to lowercase, add 32
+        // and to convert to uppercase, subtract 32
+        
+        StringBuilder ans = new StringBuilder(); //remember to convert back to string
+        
+        char[] charArray = s.toCharArray();
+        
+        for (int i=0; i<charArray.length; i++) {
+            if (charArray[i] >= 'A' && charArray[i] <= 'Z') {
+                charArray[i] += 32;
+                ans.append(charArray[i]);
+            }
+            else {
+                ans.append(charArray[i]);
+            }
+        }
+        return ans.toString();
+    }
+}
