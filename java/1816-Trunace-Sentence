@@ -1,0 +1,20 @@
+class Solution {
+    public String truncateSentence(String s, int k) {
+        String[] strArray = s.split(" ");
+        StringBuilder ans = new StringBuilder();
+        int current = 0;
+        
+        for (int i=0; i<k; i++) {
+            //don't put a space at the end of the word if it's the last word to add
+            if (i == k - 1) { 
+                ans.append(strArray[i]);
+            }
+            else {
+                ans.append(strArray[i] + " ");
+            }
+        }
+        
+        return ans.toString();
+        
+    }
+}
