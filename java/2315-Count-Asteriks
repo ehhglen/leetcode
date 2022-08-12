@@ -1,0 +1,24 @@
+class Solution {
+    public int countAsterisks(String s) {
+        
+        //edge case
+        if (s.indexOf('*') == -1) return 0;
+        
+        int pipeCount = 0;
+        // the final number of asteriks 
+        int asterikCount = 0;
+        System.out.println(s);
+        
+        for (char c : s.toCharArray()) {
+            if (c == '|') {
+                pipeCount++;
+            }
+            else if (c == '*' && pipeCount % 2 == 0) {
+                asterikCount++;
+            }
+        }
+
+        
+        return asterikCount;
+    }
+}
