@@ -1,0 +1,33 @@
+class Solution {
+    public int countPoints(String rings) {
+        // use hashset to map each rod to the colors
+        // add to count any rod (key) with the values of 'R', 'G', 'B' 
+        Map<Character, HashSet<Character>> map = new HashMap<Character, HashSet<Character>>();        
+        
+        char[] charArray = rings.toCharArray();
+
+        int ans = 0;
+        
+
+        for (int i=0; i<charArray.length; i+=2) {
+            char color = charArray[i]; //char R G B
+            char rodNum = charArray[i+1];   //int 0..9
+            
+            if (map.get(rodNum) == null) {
+                map.put(rodNum, new HashSet<Character>()); //we use hashset here cuz we don't care about duplicate colors
+                map.get(rodNum).add(color);
+            }
+            else {
+                map.get(rodNum).add(color);
+            }
+        }
+        
+        for (HashSet<Character> color : map.values()) {
+            if (color.size() == 3) { //the 3 represents the three different colors 'R', 'G', 'B'
+                ans++;
+            }
+        }
+      
+        return ans;
+    }
+}
